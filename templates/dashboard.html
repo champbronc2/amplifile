@@ -1,0 +1,108 @@
+
+{{define "body"}}
+<section class="ftco-section pb-0">
+        <div class="container" style="align-content:center">
+            <div class="row">
+                <div class="col-md-12 heading-title">
+                        <div class="col-md-3 text-center">
+                                <h2 class="heading-section mb-4">
+                                    <small>{{.user.Name}}</small>
+                                </h2>
+                                <img src="{{if .user.Avatar}} {{.user.Avatar}} {{else}} static/images/avatar.jpg {{end}}" alt="Circle Image" class="rounded-circle img-fluid image">
+                                <div><i class="ion-ios-twitter mr-2"></i>Email: {{.user.Email}}</div>
+                            </div><br><br>
+
+
+                            <table style = "width: 100%">
+                                    <tbody>
+                                    <tr>
+                                            <td><h5>Upload New File</h5></td>
+                                    </tr>
+                                    <tr>
+                                    <td>
+                                        <form id="fileUploadForm" method="post" enctype="multipart/form-data">
+                                            <div class="col-lg-3 col-sm-4">
+                                            <div class="form-group has-default">
+                                            <input type="file" name="file" id="file" value="dataFile" class="btn btn-danger" required="" />
+                                            </div>
+                                            </div><br>
+                                        </form>
+                                        <form id="fileform" action="/file" method="POST" >
+                                            <input type="hidden" name="key" value="{{.key}}" />
+                                            <input type="hidden" name="file_location" value="{{.key}}" />
+                                            <input type="hidden" name="bpay_id" value="{{.user.BPayID}}" />
+                                            <input type="hidden" name="file_type" value="png" />
+                                            <input type="hidden" name="file_name" value="Example.jpg" />
+                                            <input type="hidden" name="file_size" value="12345" />
+
+                                            <div class="editor-area">
+                                                    <div class="col-lg-3 col-sm-4">
+                                                    <div class="form-group has-default">
+                                                    <input type="number" class="form-control" name="cost" placeholder="Cost (satoshis)">
+                                                    </div>
+                                                    </div><br>
+                                                    <div class="col-lg-3 col-sm-4">
+                                                    <div class="form-group has-default">
+                                                        <select class="form-control" name="category" placeholder="Category">
+                                                            <option value = "Audio">Audio</option>
+                                                            <option value = "Video">Video</option>
+                                                            <option value = "Applications">Applications</option>
+                                                            <option value = "Games">Games</option>
+                                                            <option value = "Document">Document</option>
+                                                            <option value = "Other">Other</option>
+                                                          </select>
+                                                    </div>
+                                                    </div><br>
+                                                    <div class="col-lg-3 col-sm-4">
+                                                    <div class="form-group has-default">
+                                                    <input type="text" class="form-control" name="tags" placeholder="Tags (comma separated)">
+                                                    </div>
+                                                    </div><br>
+                                            <button name="upload_file" type="submit" class="btn btn-primary" disabled>Upload</button>
+                                        </form>
+                                    </td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
+
+
+
+          </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section" id="files">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="heading-section mb-4">Files Uploaded</h2>
+                    <table border="1" style = "width: 100%">
+                            <tbody>
+                            <tr>
+                            <td><b>Created</b></td>
+                            <td><b>File Name</b></td>
+                            <td><b>Cost</b></td>
+                            <td><b>Downloads</b></td>
+                            </tr>
+                            {{range .files}}
+                            <tr>
+                            <td>{{.Created}}</td>
+                            <td><a href="/file/{{.IDtext}}">{{.FileName}}</a></td>
+                            <td>{{.Cost}}</td>
+                            <td>0</td>
+                            </tr>
+                            {{end}}
+                            </tbody>
+                            </table>
+                </div>
+            </div>
+        </div>
+  </section>
+
+ <!-- <iframe src="https://bottle.dev/home" style="border:0px #ffffff none;" name="myiFrame" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="600px" onload="(function() {
+    var de = (this.contentDocument||this.contentWindow.document).documentElement;
+    var bd = de.getElementsByTagName('body')[0];
+    de.scrollTop = bd.scrollTop = Math.floor(bd.scrollHeight / 2);
+})()" allowfullscreen></iframe> -->
+{{end}}

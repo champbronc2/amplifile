@@ -1,0 +1,19 @@
+package: github.com/champbronc2/amplifile
+import:
+- package: github.com/aws/aws-sdk-go
+  subpackages:
+  - aws
+  - aws/credentials
+  - aws/session
+  - service/s3
+- package: github.com/dgrijalva/jwt-go
+- package: github.com/google/uuid
+- package: github.com/labstack/echo
+  subpackages:
+  - middleware
+- package: github.com/labstack/gommon
+  subpackages:
+  - log
+- package: gopkg.in/mgo.v2
+  subpackages:
+  - bson

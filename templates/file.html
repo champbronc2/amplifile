@@ -1,0 +1,70 @@
+
+{{define "body"}}
+<section class="ftco-section" id="notifications">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                        <h2 class="heading-section mb-4">Download File</h2>
+                        <div class="alert alert-info">
+                        <div class="container">
+                            <div class="d-flex">
+                            <div class="alert-icon">
+                                <i class="ion-ios-information-circle-outline"></i>
+                            </div>
+                            <p class="mb-0 ml-2"><b>Info alert:</b> Bookmark this URL to view post status...</p>
+                            </div>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true"><i class="ion-ios-close"></i></span>
+                        </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  </section>
+<section class="ftco-section pb-0">
+        <div class="container" style="align-content:center">
+            <div class="row">
+                <div class="col-md-12 heading-title">
+                    <div class="col-md-3 text-center">
+                            <table border="1" style = "width: 600px; table-layout: fixed; word-wrap: break-word;">
+                                    <tbody>
+                                    <tr>
+                                    <td><b>ID:</b></td>
+                                    <td>{{.id}}</td>
+                                    </tr>
+                                    <tr>
+                                    <td><b>Name:</b></td>
+                                    <td>{{.fileName}}</td>
+                                    </tr>
+                                    <tr>
+                                    <td><b>Cost:</b></td>
+                                    <td>{{.cost}}</td>
+                                    </tr>
+                                    <tr>
+                                    <td><b>Payment Request QR:</b></td>
+                                    <td><img src="https://api.qrserver.com/v1/create-qr-code/?data={{.paymentRequest}}&amp;size=300x300" alt="" width="150" height="150" /></td>
+                                    </tr>
+                                    <tr>
+                                    <td><b>Payment Request:</b></td>
+                                    <td>{{.paymentRequest}}</td>
+                                    </tr>
+                                    <tr>
+                                    <td><b>Download URL:</b></td>
+                                    <td>{{if .paid}} <a target="_blank" href="{{.downloadURL}}">Download here</a> {{else}} http://not_paid_yet {{end}}</td>
+                                    </tr>
+                                    <tr>
+                                    <td><b>Paid:</b></td>
+                                    <td>{{.paid}}</td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
+                    </div>
+
+
+                    <button onClick="window.location.reload();">Check for Payment</button>
+          </div>
+        </div>
+    </div>
+</section>
+{{end}}

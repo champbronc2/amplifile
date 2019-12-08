@@ -1,0 +1,46 @@
+
+{{define "body"}}
+<section class="ftco-section ftco-section-2">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-9 text-center">
+                <h2 class="heading-section mb-4 pb-md-3">
+                    Share Files, Stack Sats!
+                </h2>
+                <p>Amplifile is a unique free file host that lets you get paid directly every time someone downloads your file. Powered by Bitcoin's Lightning Network and <a target="_blank" href="https://bottle.li">BottlePay</a>!</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- - - - - -end- - - - -  -->
+<!-- Search section-->
+<!-- Upload now section-->
+
+  <section class="ftco-section" id="messages">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="heading-section mb-4">Recent File Uploads</h2>
+                    <table border="1" style = "width: 100%">
+                            <tbody>
+                            <tr>
+                            <td><b>Created</b></td>
+                            <td><b>File Name</b></td>
+                            <td><b>Cost</b></td>
+                            <td><b>Downloads</b></td>
+                            </tr>
+                            {{range .files}}
+                            <tr>
+                            <td>{{.Created}}</td>
+                            <td><a href="/file/{{.IDtext}}">{{.FileName}}</a></td>
+                            <td>{{.Cost}}</td>
+                            <td>0</td>
+                            </tr>
+                            {{end}}
+                            </tbody>
+                            </table>
+                </div>
+            </div>
+        </div>
+  </section>
+{{end}}
